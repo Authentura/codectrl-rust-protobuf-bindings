@@ -16,6 +16,7 @@ pub mod data {
 }
 
 pub mod logs_service {
+    use serde::{Deserialize, Serialize};
     use uuid::Uuid;
 
     tonic::include_proto!("codectrl.logs_service");

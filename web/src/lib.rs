@@ -16,6 +16,8 @@ pub mod data {
 }
 
 pub mod logs_service {
+    use serde::{Deserialize, Serialize};
+
     tonic::include_proto!("codectrl.logs_service");
 
     pub use log_client_client::LogClientClient as LoggerClient;

@@ -8,6 +8,10 @@ fn main() {
             "codectrl.data.log.Log",
             r#"#[derive(Serialize, Deserialize)]"#,
         )
+        .type_attribute(
+            "codectrl.logs_service.Connection",
+            r#"#[derive(Serialize, Deserialize)]"#,
+        )
         .build_server(false)
         .compile(
             &[
