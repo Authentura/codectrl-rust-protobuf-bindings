@@ -14,6 +14,8 @@ pub mod data {
 }
 
 pub mod logs_service {
+    use uuid::Uuid;
+
     tonic::include_proto!("codectrl.logs_service");
 
     #[cfg(not(target_arch = "wasm32"))]
@@ -27,4 +29,12 @@ pub mod logs_service {
     };
 
     pub use log_client_client::LogClientClient as LoggerClient;
+
+    impl Connection {
+        pub fn new() -> Self {
+            Self {
+                uuid: Uuid::new_v4().hyphenated().to_string(),
+            }
+        }
+    }
 }
