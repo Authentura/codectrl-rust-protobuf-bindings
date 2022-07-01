@@ -3,9 +3,11 @@
 
 pub mod data {
     pub mod backtrace_data {
+        use serde::{Deserialize, Serialize};
         tonic::include_proto!("codectrl.data.backtrace_data");
     }
     pub mod log {
+        use serde::{Deserialize, Serialize};
         tonic::include_proto!("codectrl.data.log");
     }
 

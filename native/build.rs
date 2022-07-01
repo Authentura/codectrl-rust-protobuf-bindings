@@ -1,5 +1,13 @@
 fn main() {
     tonic_build::configure()
+        .type_attribute(
+            "codectrl.data.backtrace_data.BacktraceData",
+            r#"#[derive(Serialize, Deserialize)]"#,
+        )
+        .type_attribute(
+            "codectrl.data.log.Log",
+            r#"#[derive(Serialize, Deserialize)]"#,
+        )
         .compile(
             &[
                 "../proto/cc_service.proto",
