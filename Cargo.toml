@@ -1,15 +1,13 @@
 [package]
 name = "codectrl-protobuf-bindings"
-version = "0.4.0"
+version = "0.5.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[dependencies]
-tonic = "0.7"
-futures-core = "0.3"
-prost = "0.10"
 
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+web = { path = "./web" }
 
-[build-dependencies]
-tonic-build = "0.7"
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+native = { path = "./native" }
