@@ -1,4 +1,7 @@
 fn main() {
+    let mut config = prost_build::Config::new();
+    config.btree_map(&["."]);
+
     tonic_build::configure()
         .type_attribute(
             "codectrl.data.backtrace_data.BacktraceData",
@@ -12,7 +15,8 @@ fn main() {
             "codectrl.logs_service.Connection",
             r#"#[derive(Serialize, Deserialize)]"#,
         )
-        .compile(
+        .compile_with_config(
+            config,
             &[
                 "../proto/cc_service.proto",
                 "../proto/backtrace_data.proto",

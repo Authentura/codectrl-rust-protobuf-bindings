@@ -12,3 +12,4 @@ tonic = { version = "0.7", default-features = false, features = ["codegen", "pro
 
 [build-dependencies]
 tonic-build = { version = "0.7", default-features = false, features = ["prost"] }
+prost-build = "0.10"

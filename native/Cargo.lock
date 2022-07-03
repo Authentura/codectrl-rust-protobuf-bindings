@@ -408,6 +408,7 @@ name = "native"
 version = "0.0.0"
 dependencies = [
  "prost",
+ "prost-build",
  "serde",
  "tonic",
  "tonic-build",
