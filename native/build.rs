@@ -15,6 +15,10 @@ fn main() {
             "codectrl.logs_service.Connection",
             r#"#[derive(Serialize, Deserialize)]"#,
         )
+        .type_attribute(
+            "codectrl.logs_service.ServerDetails",
+            r#"#[derive(Serialize, Deserialize)]"#,
+        )
         .compile_with_config(
             config,
             &[
