@@ -18,6 +18,7 @@ pub mod data {
 pub mod logs_service {
     use serde::{Deserialize, Serialize};
     use uuid::Uuid;
+    use crate::auth_service::Token;
 
     tonic::include_proto!("codectrl.logs_service");
 
@@ -37,7 +38,21 @@ pub mod logs_service {
         pub fn new() -> Self {
             Self {
                 uuid: Uuid::new_v4().hyphenated().to_string(),
+                token: None,
+            }
+        }
+
+        pub fn new_with_token(token: Token) -> Self {
+            Self {
+                uuid: Uuid::new_v4().hyphenated().to_string(),
+                token: Some(token),
             }
         }
     }
+}
+
+pub mod auth_service {
+    use serde::{Deserialize, Serialize};
+
+    tonic::include_proto!("codectrl.auth_service");
 }

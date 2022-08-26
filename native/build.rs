@@ -19,12 +19,34 @@ fn main() {
             "codectrl.logs_service.ServerDetails",
             r#"#[derive(Serialize, Deserialize)]"#,
         )
+        .type_attribute(
+            "codectrl.auth_service.TokenIntent",
+            r#"#[derive(Serialize, Deserialize)]"#,
+        )
+        .type_attribute(
+            "codectrl.auth_service.TokenPermissions",
+            r#"#[derive(Serialize, Deserialize)]"#,
+        )
+        .type_attribute(
+            "codectrl.auth_service.Token",
+            r#"#[derive(Serialize, Deserialize)]"#,
+        )
+        .type_attribute(
+            "codectrl.auth_service.Name",
+            r#"#[derive(Serialize, Deserialize)]"#,
+        )
+        .type_attribute(
+            "codectrl.auth_service.Name",
+            r#"#[repr(transparent)]"#,
+        )
+        .build_server(!cfg!(target_arch = "wasm32"))
         .compile_with_config(
             config,
             &[
                 "../proto/cc_service.proto",
                 "../proto/backtrace_data.proto",
                 "../proto/log.proto",
+                "../proto/auth.proto"
             ],
             &["../proto"],
         )
