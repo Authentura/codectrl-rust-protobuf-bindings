@@ -35,20 +35,17 @@ fn main() {
             "codectrl.auth_service.Name",
             r#"#[derive(Serialize, Deserialize)]"#,
         )
-        .type_attribute(
-            "codectrl.auth_service.Name",
-            r#"#[repr(transparent)]"#,
-        )
+        .type_attribute("codectrl.auth_service.Name", r#"#[repr(transparent)]"#)
         .build_server(!cfg!(target_arch = "wasm32"))
         .compile_with_config(
             config,
             &[
-                "../proto/cc_service.proto",
-                "../proto/backtrace_data.proto",
-                "../proto/log.proto",
-                "../proto/auth.proto"
+                "./proto/cc_service.proto",
+                "./proto/backtrace_data.proto",
+                "./proto/log.proto",
+                "./proto/auth.proto",
             ],
-            &["../proto"],
+            &["./proto"],
         )
         .unwrap_or_else(|e| panic!("Failed to compile protos {e:#?}"));
 }

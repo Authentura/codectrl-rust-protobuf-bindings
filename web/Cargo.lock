@@ -92,6 +92,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "codectrl-bindings-web"
+version = "0.0.0"
+dependencies = [
+ "prost",
+ "prost-build",
+ "serde",
+ "tonic",
+ "tonic-build",
+ "uuid",
+]
+
+[[package]]
 name = "either"
 version = "1.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -719,18 +731,6 @@ name = "wasm-bindgen-shared"
 version = "0.2.82"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6598dd0bd3c7d51095ff6531a5b23e02acdc81804e30d8f07afb77b7215a140a"
-
-[[package]]
-name = "web"
-version = "0.0.0"
-dependencies = [
- "prost",
- "prost-build",
- "serde",
- "tonic",
- "tonic-build",
- "uuid",
-]
 
 [[package]]
 name = "which"
