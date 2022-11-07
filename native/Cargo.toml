@@ -1,7 +1,12 @@
 [package]
-name = "native"
+name = "codectrl-bindings-native"
 version = "0.0.0"
 edition = "2021"
+authors = ["Samuel Boyden <s.boyden@authentura.com>"]
+license = "MIT"
+description = "Generate Rust protobuf bindings for use with CodeCTRL and the Rust logger"
+repository = "https://github.com/Authentura/codectrl-rust-protobuf-bindings"
+homepage = "https://codectrl.authentura.com"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
