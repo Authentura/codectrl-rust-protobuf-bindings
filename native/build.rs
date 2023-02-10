@@ -1,6 +1,28 @@
+use std::path::Path;
+
 fn main() {
     let mut config = prost_build::Config::new();
     config.btree_map(&["."]);
+
+    let path = Path::new("../proto");
+
+    if !path.exists() {
+        panic!(
+            "Protos directory does not exist at \"../proto\", please sync + update the submodule."
+        )
+    }
+
+    if let Ok(contents) = path.read_dir() {
+        if contents
+            .filter_map(|item| item.ok())
+            .filter_map(|item| item.file_name().into_string().ok())
+            .filter(|file_name| file_name.ends_with(".proto"))
+            .count()
+            == 0
+        {
+            panic!("Protos directory does exist at \"../proto\" but does not contain protobuf files. Please sync + update the submodule.");
+        }
+    }
 
     tonic_build::configure()
         .type_attribute(
@@ -40,12 +62,12 @@ fn main() {
         .compile_with_config(
             config,
             &[
-                "./proto/cc_service.proto",
-                "./proto/backtrace_data.proto",
-                "./proto/log.proto",
-                "./proto/auth.proto",
+                "../proto/cc_service.proto",
+                "../proto/backtrace_data.proto",
+                "../proto/log.proto",
+                "../proto/auth.proto",
             ],
-            &["./proto"],
+            &["../proto"],
         )
         .unwrap_or_else(|e| panic!("Failed to compile protos {e:#?}"));
 }
